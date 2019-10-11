@@ -38,7 +38,7 @@ class BottomNavigationWidget extends StatelessWidget {
               case 0:
                 return CupertinoTabView(
                   builder: (BuildContext context) {
-                    return Homepage();
+                    return HomePage(title: 'Home Page');
                   },
                   defaultTitle: 'Colors',
                 );
