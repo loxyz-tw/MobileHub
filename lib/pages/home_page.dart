@@ -26,8 +26,7 @@ Future<List<Event>> getHtml() async {
   var unescape = new HtmlUnescape();
   dom.Document document = parser.parse(response.body.trim());
 
-  var l = document.getElementsByClassName('col-xs-12 col-sm-6 col-md-4');
-  l.forEach((child) {
+  document.getElementsByClassName('col-xs-12 col-sm-6 col-md-4').forEach((child) {
     dom.Document doc = parser.parse(unescape.convert(child.innerHtml));
     String divString = doc.getElementsByTagName('body')[0].innerHtml.replaceAll('\"', '').replaceAll('=', '');
     int titleStartIndex = divString.indexOf('name:');
@@ -105,6 +104,7 @@ class EventsListView extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 10.0
       ),
+      padding: EdgeInsets.all(5.0),
       itemCount: events.length,
       itemBuilder: (context, index) {
         switch (events[index].res) {
